@@ -59,8 +59,8 @@ You can download the datasets (ETT, ECL, Weather, Traffic) from the following li
 
 
 
-## Source code of the backbone network
-- The source code of the backbone network is referenced from:
+## Source code of the baselines
+- The source code of the baselines are referenced from:
   - https://github.com/salesforce/fsnet/
   - https://github.com/yfzhang114/OneNet
   - https://github.com/yyalau/iclr2025_dsof
