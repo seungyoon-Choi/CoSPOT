@@ -5,13 +5,10 @@ Implementation of **Pattern-aware LLM-based Online Time Series Forecasting**.
 This method for online time series forecasting in practical scenarios leverages frequency decomposition to represent the time series as a combination of frequency bases, with learned knowledge for each basis. It integrates a pre-trained LLM with the time series backbone to enable effective adaptation to streaming data in data-scarce online settings, utilizing the LLM’s extensive knowledge.
 
 ## Basics
-1. The train code for $T_1$ is in `train_task1.py`.
-2. The main train code for $T_{2:i}$ is in `train_ditto.py`.
-3. The inference code is in `inference_past_tasks_update.py`.
-4. `run_main.py` : Execute the entire experiment.
-5. `models/LLM4OTSF.py` : The structure of the proposed model.
-6. `utils/tools.py` : The operation of the training phase and online phase
-7. `data_provider/data_loader.py` : Load the data to be used in the training phase and online phase based on the dataset, prediction length, split ratio, and other factors.
+1. `run_main.py` : Execute the entire experiment.
+2. `models/LLM4OTSF.py` : The structure of the proposed model.
+3. `utils/tools.py` : The operation of the training phase and online phase
+4. `data_provider/data_loader.py` : Load the data to be used in the training phase and online phase based on the dataset, prediction length, split ratio, and other factors.
 
 
 ## Dataset
