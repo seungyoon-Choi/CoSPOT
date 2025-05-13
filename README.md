@@ -1,7 +1,7 @@
-# Pattern-aware LLM-based Online Time Series Forecasting
+# LLM4OT: LLM-based Online Time Series Forecasting with Frequency-driven Pattern Recognition
 
 ## Introduction
-Implementation of **Pattern-aware LLM-based Online Time Series Forecasting**.  
+Implementation of **LLM4OT: LLM-based Online Time Series Forecasting with Frequency-driven Pattern Recognition**.  
 This method for online time series forecasting in practical scenarios leverages frequency decomposition to represent the time series as a combination of frequency bases, with learned knowledge for each basis. It integrates a pre-trained LLM with the time series backbone to enable effective adaptation to streaming data in data-scarce online settings, utilizing the LLM’s extensive knowledge.
 
 ## Basics
