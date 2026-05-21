@@ -6,7 +6,7 @@ This method for online time series forecasting in practical scenarios leverages 
 
 ## Basics
 1. `run_main.py` : Execute the entire experiment.
-2. `models/LLM4OTSF.py` : The structure of the proposed model.
+2. `models/CoSPOT.py` : The structure of the proposed model.
 3. `utils/tools.py` : The operation of the training phase and online phase
 4. `data_provider/data_loader.py` : Load the data to be used in the training phase and online phase based on the dataset, prediction length, split ratio, and other factors.
 
@@ -41,7 +41,7 @@ You can download the datasets (ETT, ECL, Weather, Traffic) from the following li
 - `--data_path:` Path of the dataset.<br>
 	- usage example :`--data_path ETTh2.csv`
 - `--model:` Types of models used for training.<br>
-	- usage example :`--model llm4otsf`
+	- usage example :`--model cospot`
 - `--seq_len:` Input sequence length.<br>
 	- usage example : `--seq_len 96`
 - `--pred_len:`  prediction sequence length.<br>
