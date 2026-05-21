@@ -1,7 +1,7 @@
-# LLM4OT: LLM-based Online Time Series Forecasting with Frequency-driven Pattern Recognition
+# Compositional Spectral Prompts for LLM-based Online Time Series Forecasting
 
 ## Introduction
-Implementation of **LLM4OT: LLM-based Online Time Series Forecasting with Frequency-driven Pattern Recognition**.  
+Implementation of **Compositional Spectral Prompts for LLM-based Online Time Series Forecasting**.  
 This method for online time series forecasting in practical scenarios leverages frequency decomposition to represent the time series as a combination of frequency bases, with learned knowledge for each basis. It integrates a pre-trained LLM with the time series backbone to enable effective adaptation to streaming data in data-scarce online settings, utilizing the LLM’s extensive knowledge.
 
 ## Basics
