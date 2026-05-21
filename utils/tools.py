@@ -154,7 +154,7 @@ def vali(args, accelerator, model, vali_data, vali_loader, criterion, mae_metric
                 batch_x_mark = batch_x_mark.float().to(accelerator.device)
                 batch_y_mark = batch_y_mark.float().to(accelerator.device)
 
-                if args.model == 'llm4otsf':
+                if args.model == 'cospot':
                     fourier_batch_x = torch.fft.rfft(batch_x, dim=1)
                     fourier_batch_x = torch.abs(fourier_batch_x)
                     #normalize
@@ -185,7 +185,7 @@ def vali(args, accelerator, model, vali_data, vali_loader, criterion, mae_metric
                     if args.output_attention:
                         outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                     else:
-                        if args.model == 'llm4otsf':
+                        if args.model == 'cospot':
                             outputs, pseudo_label = model(batch_x, fourier_batch_x, batch_x_mark, dec_inp, batch_y_mark, args.prompt_type, args.frequency_ratio, wavelet_batch_x)
                         else:
                             outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
@@ -229,7 +229,7 @@ def vali(args, accelerator, model, vali_data, vali_loader, criterion, mae_metric
             batch_x_mark = batch_x_mark.float().to(accelerator.device)
             batch_y_mark = batch_y_mark.float().to(accelerator.device)
 
-            if args.model == 'llm4otsf':
+            if args.model == 'cospot':
                 fourier_batch_x = torch.fft.rfft(batch_x, dim=1)
                 fourier_batch_x = torch.abs(fourier_batch_x)
                 #normalize
@@ -259,7 +259,7 @@ def vali(args, accelerator, model, vali_data, vali_loader, criterion, mae_metric
                 if args.output_attention:
                     outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                 else:
-                    if args.model == 'llm4otsf':
+                    if args.model == 'cospot':
                         outputs, pseudo_label = model(batch_x, fourier_batch_x, batch_x_mark, dec_inp, batch_y_mark, args.prompt_type, args.frequency_ratio, wavelet_batch_x)
                     else:
                         outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
