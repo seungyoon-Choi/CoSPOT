@@ -7,7 +7,7 @@ from torch.optim import lr_scheduler
 from tqdm import tqdm
 import ptwt, pywt
 
-from models import LLM4OTSF, Autoformer, DLinear
+from models import CoSPOT, Autoformer, DLinear
 
 from data_provider.data_factory import data_provider
 import time
@@ -21,7 +21,7 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:64"
 
 from utils.tools import del_files, EarlyStopping, adjust_learning_rate, vali, load_content
 
-parser = argparse.ArgumentParser(description='LLM4OTSF')
+parser = argparse.ArgumentParser(description='CoSPOT')
 
 fix_seed = 2021
 random.seed(fix_seed)
@@ -33,9 +33,9 @@ parser.add_argument('--task_name', type=str, default='long_term_forecast',
                     help='task name, options:[long_term_forecast, short_term_forecast, imputation, classification, anomaly_detection]')
 parser.add_argument('--is_training', type=int, default=1, help='status')
 parser.add_argument('--model_id', type=str, default='ETTh2_96_24', help='model id')
-parser.add_argument('--model_comment', type=str, default='LLM4OTSF-ETTh2', help='prefix when saving test results')
-parser.add_argument('--model', type=str, default='llm4otsf',
-                    help='model name, options: [llm4otsf, Autoformer, DLinear]')
+parser.add_argument('--model_comment', type=str, default='CoSPOT-ETTh2', help='prefix when saving test results')
+parser.add_argument('--model', type=str, default='cospot',
+                    help='model name, options: [cospot, Autoformer, DLinear]')
 parser.add_argument('--seed', type=int, default=2021, help='random seed')
 
 # data loader
@@ -141,8 +141,8 @@ for ii in range(args.itr):
         model = Autoformer.Model(args).float()
     elif args.model == 'DLinear':
         model = DLinear.Model(args).float()
-    elif args.model == 'llm4otsf':
-        model = LLM4OTSF.Model(args).float()
+    elif args.model == 'cospot':
+        model = CoSPOT.Model(args).float()
 
     path = os.path.join(args.checkpoints,
                         setting + '-' + args.model_comment)  # unique checkpoint saving path
@@ -197,7 +197,7 @@ for ii in range(args.itr):
             batch_x_mark = batch_x_mark.float().to(accelerator.device)
             batch_y_mark = batch_y_mark.float().to(accelerator.device)
 
-            if args.model == 'llm4otsf':
+            if args.model == 'cospot':
                 fourier_batch_x = torch.fft.rfft(batch_x, dim=1)
                 fourier_batch_x = torch.abs(fourier_batch_x)
                 #normalize
@@ -235,7 +235,7 @@ for ii in range(args.itr):
                 if args.output_attention:
                     outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
                 else:
-                    if args.model == 'llm4otsf':
+                    if args.model == 'cospot':
                         outputs, pseudo_label = model(batch_x, fourier_batch_x, batch_x_mark, dec_inp, batch_y_mark, args.prompt_type, args.frequency_ratio, wavelet_batch_x)
                     else:
                         outputs = model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
