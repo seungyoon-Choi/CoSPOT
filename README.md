@@ -21,6 +21,8 @@ You can download the datasets (ETT, ECL, Weather, Traffic) from the following li
   https://archive.ics.uci.edu/dataset/321/electricityloaddiagrams20112014
 4. Traffic
   https://pems.dot.ca.gov/
+5. Exchange Rate
+  https://github.com/laiguokun/multivariate-time-series-data
 
 
 ## Requirments
